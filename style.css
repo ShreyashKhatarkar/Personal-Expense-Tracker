@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --primary: #6c63ff;
+  --income: #00c853;
+  --expense: #ff5252;
+  --text: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.balance-card h2 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.income span {
+  color: var(--income);
+  font-weight: 600;
+}
+
+.expense span {
+  color: var(--expense);
+  font-weight: 600;
+}
+
+.transactions {
+  margin-top: 10px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  border-left: 5px solid;
+}
+
+.transaction.income {
+  border-color: var(--income);
+}
+
+.transaction.expense {
+  border-color: var(--expense);
+}
+
+.transaction p {
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background: #2196f3;
+}
+
+.delete-btn {
+  background: #f44336;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.income-btn {
+  background: var(--income);
+}
+
+.expense-btn {
+  background: var(--expense);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
