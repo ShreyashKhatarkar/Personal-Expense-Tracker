@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="app">
+    <h1> Personal Expense Tracker</h1>
+
+    <div class="card balance-card">
+      <p>Total Balance</p>
+      <h2 id="netAmount">₹0</h2>
+
+      <div class="summary">
+        <div class="income">
+          <p>Income</p>
+          <span id="earning">₹0</span>
+        </div>
+        <div class="expense">
+          <p>Expense</p>
+          <span id="expense">₹0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Transactions</h3>
+      <div class="transactions"></div>
+    </div>
+
+    <div class="card">
+      <h3>Add Transaction</h3>
+      <form id="transactionForm">
+        <input type="text" id="text" placeholder="Description" required />
+        <input type="number" id="amount" placeholder="Amount" required />
+
+        <div class="btn-group">
+          <button type="submit" id="earnBtn" class="btn income-btn">
+            + Add Income
+          </button>
+          <button type="submit" id="expBtn" class="btn expense-btn">
+            - Add Expense
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
