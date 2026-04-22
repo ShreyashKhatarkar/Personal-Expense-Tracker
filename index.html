@@ -1,55 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="app">
-    <h1> Personal Expense Tracker</h1>
-
-    <div class="card balance-card">
-      <p>Total Balance</p>
-      <h2 id="netAmount">₹0</h2>
-
-      <div class="summary">
-        <div class="income">
-          <p>Income</p>
-          <span id="earning">₹0</span>
+    <div id="login-modal" class="modal">
+        <div class="modal-content card">
+            <h2>Welcome to Personal Expense Tracker!</h2>
+            <p>Enter your name to start tracking.</p>
+            <input type="text" id="username-input" placeholder="Your Name">
+            <button id="login-btn" class="btn primary-btn">Go to Dashboard</button>
         </div>
-        <div class="expense">
-          <p>Expense</p>
-          <span id="expense">₹0</span>
+    </div>
+    
+    <div id="dashboard" class="container hidden">
+        <header>
+            <h1 id="greeting">Hello, User</h1>
+            <button id="clear-data-btn" class="btn danger-btn"><i class="fas fa-trash"></i> Clear All Data</button>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                
+                <div class="card budget-card">
+                    <h3><i class="fas fa-wallet"></i> Budget Manager</h3>
+                    <div class="budget-input-group">
+                        <input type="number" id="budget-input" placeholder="Set Total Budget (₹)" min="0">
+                        <button id="set-budget-btn" class="btn primary-btn">Set</button>
+                    </div>
+                    
+                    <div class="summary-box">
+                        <p>Total Budget: <span id="total-budget" class="amount">₹0</span></p>
+                        <p>Total Expenses: <span id="total-expenses" class="amount">₹0</span></p>
+                        <p>Remaining Balance: <span id="remaining-balance" class="amount positive">₹0</span></p>
+                    </div>
+                </div>
+
+                <div class="card category-manager-card">
+                    <h3><i class="fas fa-tags"></i> Custom Categories</h3>
+                    <div class="budget-input-group">
+                        <input type="text" id="new-category-input" placeholder="New Category Name">
+                        <button id="add-category-btn" class="btn secondary-btn"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                </div>
+
+                <div class="card expense-input-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Add New Expense</h3>
+                    <input type="text" id="expense-name" placeholder="Expense Name (e.g., Dinner)" required>
+                    <input type="number" id="expense-amount" placeholder="Amount (₹)" min="1" required>
+                    <select id="expense-category" required>
+                        <option value="">Select Category</option>
+                        </select>
+                    <input type="date" id="expense-date" required>
+                    <button id="add-expense-btn" class="btn primary-btn"><i class="fas fa-plus-circle"></i> Add Expense</button>
+                </div>
+
+                <div class="card filter-sort-card">
+                    <h3><i class="fas fa-filter"></i> Filter & Sort</h3>
+                    <div class="control-group">
+                        <select id="filter-category">
+                            <option value="All">All Categories</option>
+                            </select>
+                        <select id="sort-amount">
+                            <option value="none">Sort by Amount</option>
+                            <option value="asc">Amount Ascending</option>
+                            <option value="desc">Amount Descending</option>
+                        </select>
+                    </div>
+                    <button id="download-report-btn" class="btn secondary-btn"><i class="fas fa-file-csv"></i> Download CSV Report</button>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                
+                <div id="insights-card" class="card insights-card">
+                    <h3><i class="fas fa-brain"></i> Smart Insights</h3>
+                    <p id="smart-message">Analyze your spending by adding expenses...</p>
+                </div>
+
+                <div class="card charts-card">
+                    <h3><i class="fas fa-chart-pie"></i> Visual Analytics</h3>
+                    <div class="chart-container">
+                        <h4>Category Spending</h4>
+                        <canvas id="categoryPieChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Daily Spending Trend</h4>
+                        <canvas id="dailyBarChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card expense-list-card">
+                    <h3><i class="fas fa-list-ul"></i> Expense History</h3>
+                    <ul id="expense-list">
+                        </ul>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="card">
-      <h3>Transactions</h3>
-      <div class="transactions"></div>
-    </div>
-
-    <div class="card">
-      <h3>Add Transaction</h3>
-      <form id="transactionForm">
-        <input type="text" id="text" placeholder="Description" required />
-        <input type="number" id="amount" placeholder="Amount" required />
-
-        <div class="btn-group">
-          <button type="submit" id="earnBtn" class="btn income-btn">
-            + Add Income
-          </button>
-          <button type="submit" id="expBtn" class="btn expense-btn">
-            - Add Expense
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
