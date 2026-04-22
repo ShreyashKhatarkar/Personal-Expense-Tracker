@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #4CAF50; /* Green for budget positive */
-    --secondary-color: #2196F3; /* Blue */
-    --danger-color: #F44336; /* Red for over budget */
+    --primary-color: #4CAF50; 
+    --secondary-color: #2196F3; 
+    --danger-color: #F44336; 
     --background-color: #f0f2f5;
     --card-bg: #ffffff;
     --text-color: #333;
